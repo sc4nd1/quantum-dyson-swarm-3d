@@ -96,7 +96,4 @@ uv pip install -r requirements.txt
 # 3. Launch the Interactive Real-Time 3D Simulator
 .\.venv\Scripts\python.exe scripts/run_realtime_flare.py
 
-# 4. Regenerate the static benchmark plot and README GIF
-.\.venv\Scripts\python.exe scripts/run_simulation.py
-.\.venv\Scripts\python.exe scripts/export_gif.py
 ```
