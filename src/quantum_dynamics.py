@@ -20,7 +20,6 @@ def simulate_dicke_harvesting(n_qubits=5, t_max=40.0, steps=250):
     total_coherent_op = j_minus.dag() * j_minus
     classical_sum_op = sum(num_ops)
 
-    # Hamiltoniana collettiva con scambio di fotoni entangled
     H = 0.5 * omega_sun * sum(sx)
     for i in range(n_qubits):
         for j in range(i + 1, n_qubits):
@@ -30,5 +29,5 @@ def simulate_dicke_harvesting(n_qubits=5, t_max=40.0, steps=250):
     psi0 = qt.tensor([qt.basis(2, 0) for _ in range(n_qubits)])
     tlist = np.linspace(0, t_max, steps)
 
-    res = qt.mesolve(H, psi0, tlist, c_ops, [total_coherent_op, classical_sum_op])
+    res = qt.mesolve(H, psi0, tlist, c_ops=c_ops, e_ops=[total_coherent_op, classical_sum_op])
     return tlist, res.expect[0], res.expect[1]
