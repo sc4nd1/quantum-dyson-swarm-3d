@@ -20,8 +20,8 @@ jobs:
 
       - name: Create venv and install dependencies
         run: |
-          uv venv --python 3.12
-          uv pip install -r requirements.txt
+          uv venv .venv --python 3.12
+          uv pip install -r requirements.txt pytest
 
       - name: Run Physics & Routing Unit Tests
-        run: uv run pytest tests/test_swarm.py -v
+        run: ./.venv/bin/python -m pytest tests/test_swarm.py -v
